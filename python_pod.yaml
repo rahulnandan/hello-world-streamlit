@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-streamlit
+  labels:
+    app: my-app-streamlit
+spec:
+  containers:
+    - name: app
+      image: rahulnandan/hello-world-streamlit:latest
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8501
+          name: http
+      env:
+            - name: OTEL_SERVICE_NAME
+              value: "my-app-streamlit"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://observe-agent-node-logs-metrics.observe.svc.cluster.local:4317"
