@@ -8,7 +8,7 @@ spec:
   containers:
     - name: app
       image: rahulnandan/hello-world-streamlit:latest
-      imagePullPolicy: IfNotPresent
+      imagePullPolicy: Always
       ports:
         - containerPort: 8501
           name: http
